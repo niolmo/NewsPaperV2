@@ -20,4 +20,6 @@ class PostAdm(admin.ModelAdmin):
     raw_id_fields = ['author']
 
 
-admin.site.register(Comments)
+@admin.register(Comments)
+class ComADM(admin.ModelAdmin):
+    list_display = ['publ', 'user', 'post',]

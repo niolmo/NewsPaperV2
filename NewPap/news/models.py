@@ -87,7 +87,8 @@ class Post(models.Model):
 
 
 class Comments(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, verbose_name='Пост')
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name='Пользователь')
     publ = models.DateField(default=timezone.now, verbose_name='Дата')
