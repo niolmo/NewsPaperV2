@@ -94,3 +94,23 @@ class Comments(models.Model):
     title = models.CharField(max_length=250, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст')
     runk = models.IntegerField(default=0, verbose_name='Рейтинг')
+
+    # МЕТОДЫ
+
+    def like(self):
+        self.runk += 1
+        self.save()
+
+    def dislike(self):
+        self.runk -= 1
+        self.save()
+
+    class Meta:
+        ordering = ['-publ']
+        managed = True
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментари'
+        indexes = [models.Index(fields=['-publ'])]
+
+    def __str__(self):
+        return f'{self.post}, {self.user}, {self.publ}, {self.title}, {self.text}, {self.runk},'

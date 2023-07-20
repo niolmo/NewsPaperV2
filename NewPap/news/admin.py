@@ -13,9 +13,10 @@ admin.site.register(Category)
 
 @admin.register(Post)
 class PostAdm(admin.ModelAdmin):
-    list_display = ['publ', 'sort', 'title', 'slug', 'author']
+    list_display = ['publ', 'sort', 'title', 'slug', 'author', 'runk']
     list_filter = ['publ', 'title', 'author']
     filter_horizontal = ['categories']
+    prepopulated_fields = {'slug': ('title',)}
     raw_id_fields = ['author']
 
 
