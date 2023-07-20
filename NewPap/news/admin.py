@@ -22,4 +22,4 @@ class PostAdm(admin.ModelAdmin):
 
 @admin.register(Comments)
 class ComADM(admin.ModelAdmin):
-    list_display = ['publ', 'user', 'post',]
+    list_display = ['publ', 'post', 'user', 'runk']
