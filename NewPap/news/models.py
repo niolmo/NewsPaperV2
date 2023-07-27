@@ -55,7 +55,8 @@ class Post(models.Model):
     ]
     publ = models.DateField(default=timezone.now, verbose_name='Дата')
     sort = models.CharField(max_length=2, choices=types, default=news)
-    categories = models.ManyToManyField(Category, verbose_name='Категории')
+    categories = models.ForeignKey(
+        Category, verbose_name='Категории', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=250, verbose_name='Заголовок')
     slug = models.SlugField(max_length=50, verbose_name='Адрес')
     text = models.TextField(verbose_name='Текст')
