@@ -18,6 +18,20 @@
         <h4 class="fw-bold">{{ post.author }}</h4> 
         <br>
     {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if post_list.has_previous %}
+                <a href="?page=1"class="nav-link d-inline" me-2>&laquo; first</a>
+                <a href="?page={{ post_list.previous_page_number}}"class="nav-link d-inline ms-1">previous</a>
+            {% endif %}
     
-        
+            <span class="current">
+                Page {{ post_list.number }} of {{ post_list.paginator.num_pages }}.
+            </span>
+            {% if post_list.has_next %}
+                <a href="?page={{ post_list.next_page_number }}" class="nav-link d-inline me-2">next</a>
+                <a href="?page={{ post_list.paginator.num_pages }}"class="nav-link d-inline ms-1">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock content %}
