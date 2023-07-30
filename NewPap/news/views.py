@@ -11,3 +11,12 @@ class PostView(View):
         page_nuber = request.GET.get('page', 1)
         posts = paginator.page(page_nuber)
         return render(request, 'news.html', {'post_list': posts})
+
+
+class Search(View):
+    def get(serf, request):
+        post_list = Post.objects.all()
+        paginator = Paginator(post_list, 3)
+        page_nuber = request.GET.get('page', 1)
+        posts = paginator.page(page_nuber)
+        return render(request, 'search.html', {'post_list': posts})
