@@ -61,7 +61,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=50, verbose_name='Адрес')
     text = models.TextField(verbose_name='Текст')
     author = models.ForeignKey(
-        Author, on_delete=models.CASCADE, verbose_name='Автор')
+        User, on_delete=models.CASCADE, verbose_name='Автор')
     runk = models.IntegerField(default=0, verbose_name='Рейтинг')
 
     # МЕТОДЫ
