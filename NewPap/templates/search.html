@@ -7,7 +7,12 @@
     <br>
     <br>
     <form action="{% url 'search' %}" method="get">
-        <input type="text" name="q" id="search">
+        <label for="q">Дата:</label>
+        <input type="text" name="q" id="publ">
+        <label for="d">Заголовок:</label>
+        <input type="text" name="d" id="title">
+        <label for="a">Автор:</label>
+        <input type="text" name="a" id="author">
         <input type="submit" value="Найти">
     </form>
     {% for post in search_list %}
