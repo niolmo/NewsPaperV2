@@ -15,8 +15,8 @@ class PostView(View):
 
 class Search(View):
     def get(serf, request):
-        search_list = Post.objects.filter(publ=request.GET.get('q')),  Post.objects.filter(
-            title=request.GET.get('d')), Post.objects.filter(author__username=request.GET.get('a'))
+        search_list = Post.objects.filter(publ=request.GET.get('q')).filter(
+            title=request.GET.get('d')).filter(author__username=request.GET.get('a'))
         paginator = Paginator(search_list, 3)
         page_nuber = request.GET.get('page', 1)
         posts = paginator.page(page_nuber)
