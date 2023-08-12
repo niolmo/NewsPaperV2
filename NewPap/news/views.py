@@ -28,3 +28,7 @@ class Search(View):
         context["d"] = self.request.GET.get('d')
         context["a"] = self.request.GET.get('a')
         return context
+
+
+class AddNews(View):
+    pass
