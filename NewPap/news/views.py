@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic.base import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post
 from django.core.paginator import Paginator
 from .filters import PostFilter
@@ -26,3 +26,15 @@ class Search(ListView):
         context['q'] =PostFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
+
+class NewsDetail(DetailView):
+    model = Post
+    template_name = 'item.html'
+    context_object_name = 'post'
+
+
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['time_now'] = datetime.UTC
+    context['value'] = None
+    return context
