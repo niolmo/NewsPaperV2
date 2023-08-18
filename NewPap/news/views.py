@@ -1,4 +1,4 @@
-from django.db.models import Q
+from datetime import datetime
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
@@ -20,10 +20,11 @@ class Search(ListView):
     model = Post
     template_name = 'search.html'
     paginate_by = 3
+    ordering = ['publ']
 
     def get_context_data(self, *, object_list=Post.objects.filter(), **kwargs):
         context = super().get_context_data(**kwargs)
-        context['q'] =PostFilter(self.request.GET, queryset=self.get_queryset())
+        context['q'] = PostFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
 
