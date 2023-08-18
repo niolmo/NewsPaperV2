@@ -7,15 +7,12 @@
     <br>
     <br>
     <form action="{% url 'search' %}" method="get">
-        <label for="q">Дата:</label>
-        <input type="text" name="q" id="publ">
-        <label for="d">Заголовок:</label>
-        <input type="text" name="d" id="title">
-        <label for="a">Автор:</label>
-        <input type="text" name="a" id="author">
+        {{ q.form }}
         <input type="submit" value="Найти">
     </form>
-    {% for post in search_list %}
+    <br>
+    <br>
+    {% for post in q.qs %}
         {{post.publ}}
         <br>
         <h2 class="fw-bolder">{{ post.title }}</h2>
