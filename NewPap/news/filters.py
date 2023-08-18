@@ -4,4 +4,8 @@ from .models import Post
 class PostFilter(FilterSet):
     class Meta:
         model=Post
-        fields=('publ', 'title', 'author')
+        fields={
+            'publ': ['gt'],
+            'title': ['icontains'],
+            'author': ['exact'],
+        }
