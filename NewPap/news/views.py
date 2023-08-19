@@ -39,3 +39,7 @@ def get_context_data(self, **kwargs):
     context['time_now'] = datetime.UTC
     context['value'] = None
     return context
+
+
+class PostForm():
+    pass

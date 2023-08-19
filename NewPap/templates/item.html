@@ -3,12 +3,10 @@
 
 <!-- Название у нас будет item -->
 {% block title %}item{% endblock title %}
-<!--Свои фильтры-->
-{% load custom_filters %}
 
 <!-- В контенте на странице мы выводим сам товар, айди которого было передано в адрес -->
 {% block content %}
-<h1>{{ title  }}</h1>
+<h1>{{ post.title  }}</h1>
 {{ post.postCraTime}}
-<p>{{ text }}</p>
+<p>{{ post.text }}</p>
 {% endblock content %}
