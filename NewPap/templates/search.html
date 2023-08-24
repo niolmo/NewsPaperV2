@@ -23,26 +23,4 @@
         <h4 class="fw-bold">{{ post.author }}</h4> 
         <br>
     {% endfor %}
-    <div class="text-center">
-        <span class="step-links">
-            {% if post_list.has_previous %}
-                <a href="?page=1"class="nav-link d-inline" me-2>Первая</a>
-                <a href="?page={{ post_list.previous_page_number}}"class="nav-link d-inline ms-1"><<<</a>
-            {% endif %}
-    
-            <span class="current">
-                {% for num in post_list.paginator.page_range %}
-                    {% if post_list.number == num %}
-                        <a>{{ num }}</a>
-                    {% elif num > post_list.number|add:'-3' and num < post_list.number|add:'3' %}
-                        <a href="?page={{ num }}">{{ num }}</a>
-                    {% endif %}
-                {% endfor %}
-            </span>
-            {% if post_list.has_next %}
-                <a href="?page={{ post_list.next_page_number }}" class="nav-link d-inline me-2">>>>></a>
-                <a href="?page={{ post_list.paginator.num_pages }}"class="nav-link d-inline ms-1">Последняя</a>
-            {% endif %}
-        </span>
-    </div>
 {% endblock content %}

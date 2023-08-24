@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from .models import Post
+from .forms import PosForm
 from django.core.paginator import Paginator
 from .filters import PostFilter
 
@@ -41,5 +42,21 @@ def get_context_data(self, **kwargs):
     return context
 
 
-class PostForm():
-    pass
+class PostForm(ListView):
+    model = Post
+    template_name = 'addpost.html'
+    context_object_name = 'post'
+    ordering = ['publ']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['choices'] = Post.types
+        context['form'] = PosForm()
+        return context
+
+    def formCreate(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return super().get(request, *args, **kwargs)
+
