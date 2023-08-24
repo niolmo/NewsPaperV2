@@ -2,12 +2,18 @@
 
 
 {% block content %}
-    <h1>Добавьте новость:</h1>
+
     <form method="post" class="post-form" action="{% url 'add' %}" class="post_form">
         <br>
         <br>
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Отправить">
+        <div class="text-center ">
+            <h1>Добавьте новость:</h1>
+            <br>
+            <br>
+            {{ form.as_p }}
+            <input type="submit" value="Отправить">
+        </div>
+
     </form>
 {% endblock content %}
