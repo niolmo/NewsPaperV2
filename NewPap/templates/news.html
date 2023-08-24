@@ -1,5 +1,7 @@
 {% extends 'flatpages/default.html' %}
 
+{% load custom_filters %}
+
 {% block content %}
     <h1 class="text-center"> Последние Новости: {{post_list|length}}</h1>
     <h3>{{ time_now }}</h3>
@@ -14,7 +16,7 @@
         <br>
         <h3 class="fw-bold">Тема: {{ post.categories }}</h3>
         <br>
-        <p class="fw-normal">{{ post.text }}</p>
+        <p class="fw-normal">{{ post.text|Censor|truncatewords:50 }}</p>
         <h4 class="fw-bold">{{ post.author }}</h4> 
         <br>
     {% endfor %}
