@@ -12,7 +12,7 @@
     {% for post in post_list %}
         {{post.publ}}
         <br>
-        <h2 class="fw-bolder"><a href="">{{ post.title }}</a></h2>
+        <h2 class="fw-bolder"><a href="{% url 'newsPort:detail' post.id%}">{{ post.title }}</a></h2>
         <br>
         <h3 class="fw-bold">Тема: {{ post.categories }}</h3>
         <br>
