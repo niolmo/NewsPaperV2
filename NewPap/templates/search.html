@@ -15,11 +15,11 @@
     {% for post in q.qs %}
         {{post.publ}}
         <br>
-        <h2 class="fw-bolder">{{ post.title }}</h2>
+        <h2 class="fw-bolder"><a href="{% url 'newsPort:detail' post.id%}">{{ post.title }}</a></h2>
         <br>
         <h3 class="fw-bold">Тема: {{ post.categories }}</h3>
         <br>
-        <p class="fw-normal">{{ post.text }}</p>
+        <p class="fw-normal">{{ post.text|truncatewords:50 }}</p>
         <h4 class="fw-bold">{{ post.author }}</h4> 
         <br>
     {% endfor %}
