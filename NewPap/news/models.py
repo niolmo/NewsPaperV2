@@ -86,6 +86,12 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.publ}, {self.sort}, {self.categories}, {self.title}, {self.slug}, {self.text}, {self.author}, {self.runk},'
 
+    def __str__(self):
+        return f'Post #{self.pk} - Name: {self.name}'
+
+    def get_absolute_url(self):
+        return f'/(self.id)'
+
 
 class Comments(models.Model):
     post = models.ForeignKey(
