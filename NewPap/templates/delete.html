@@ -1,0 +1,23 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}Del{% endblock title %}
+
+{% block content %}
+    <h3>Удалить этот пост?</h3>
+    <div class="card">
+        {{post.publ}}
+        <br>
+        <h2 class="fw-bolder"><a href="{% url 'newsPort:detail' post.id%}">{{ post.title }}</a></h2>
+        <br>
+        <h3 class="fw-bold">Тема: {{ post.categories }}</h3>
+        <br>
+        <p class="fw-normal">{{ post.text|Censor|truncatewords:50 }}</p>
+        <h4 class="fw-bold">{{ post.author }}</h4> 
+       </div>
+       <form method="POST">
+        {% csrf_token %}
+          <input class="btn btn-success" type="submit" value="Delete">
+       </form>
+{% endblock content %}
