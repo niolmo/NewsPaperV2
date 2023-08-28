@@ -77,7 +77,9 @@ class PosForm(CreateView):
 
 class PostUp(UpdateView):
     template_name = 'addpost.html'
-    form_class = PosForm
+    fields = ['publ', 'sort', 'categories',
+              'title', 'text', 'author']
+    template_name_suffix = '_update_form'
 
     def get_object(self, **kwargs):
         id = self.kwargs.get('pk')
