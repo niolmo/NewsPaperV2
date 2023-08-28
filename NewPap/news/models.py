@@ -90,7 +90,7 @@ class Post(models.Model):
         return f'Post #{self.pk} - Name: {self.name}'
 
     def get_absolute_url(self):
-        return f'/(self.id)'
+        return f'http://127.0.0.1:8000/{self.id}'
 
 
 class Comments(models.Model):
