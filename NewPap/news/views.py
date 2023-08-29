@@ -1,11 +1,12 @@
 from datetime import datetime
 from django.shortcuts import render
 from django.views.generic.base import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post
 from .forms import PosForm
 from django.core.paginator import Paginator
 from .filters import PostFilter
+from django.urls import reverse_lazy
 
 
 class PostView(View):
@@ -25,7 +26,8 @@ class Search(ListView):
 
     def get_context_data(self, *, object_list=Post.objects.filter(), **kwargs):
         context = super().get_context_data(**kwargs)
-        context['q'] = PostFilter(self.request.GET, queryset=self.get_queryset())
+        context['q'] = PostFilter(
+            self.request.GET, queryset=self.get_queryset())
         return context
 
 
@@ -34,25 +36,37 @@ class NewsDetail(DetailView):
     template_name = 'item.html'
     context_object_name = 'post'
 
-
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['time_now'] = datetime.UTC
-    context['value'] = None
-    return context
-
-
-class PostForm(ListView):
-    model = Post
-    template_name = 'addpost.html'
-    context_object_name = 'post'
-    ordering = ['publ']
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['choices'] = Post.types
-        context['form'] = PosForm()
+        context['time_now'] = datetime.now
+        context['value'] = None
         return context
+
+
+# class PostForm(ListView):
+#     model = Post
+#     template_name = 'addpost.html'
+#     context_object_name = 'post'
+#     ordering = ['publ']
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['choices'] = Post.types
+#         context['form'] = PosForm()
+#         return context
+
+#     def formCreate(self, request, *args, **kwargs):
+#         form = self.form_class(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return super().get(request, *args, **kwargs)
+class PosForm(CreateView):
+    template_name = 'addpost.html'
+    form_class = PosForm
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Post.objects.get(pk=id)
 
     def formCreate(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -60,3 +74,19 @@ class PostForm(ListView):
             form.save()
             return super().get(request, *args, **kwargs)
 
+
+class PostUp(UpdateView):
+    template_name = 'addpost.html'
+    fields = ['publ', 'sort', 'categories',
+              'title', 'text', 'author']
+    template_name_suffix = '_update_form'
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Post.objects.get(pk=id)
+
+
+class PostDelete(DeleteView):
+    template_name = 'delete.html'
+    queryset = Post.objects.all()
+    success_url = reverse_lazy('newsPort:allnews')

@@ -6,7 +6,16 @@
 
 <!-- В контенте на странице мы выводим сам товар, айди которого было передано в адрес -->
 {% block content %}
+{{post.publ}}
+<br>
 <h1>{{ post.title  }}</h1>
 {{ post.postCraTime}}
 <p>{{ post.text }}</p>
+<br>
+<br>
+<div class="post_btn">
+    <a href="{% url 'newsPort:up' post.id %}">Редактировать</a>
+    <a href="{% url 'newsPort:delete' post.id %}">Удалить</a>
+</div>
+
 {% endblock content %}
