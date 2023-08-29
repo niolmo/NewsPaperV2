@@ -89,4 +89,4 @@ class PostUp(UpdateView):
 class PostDelete(DeleteView):
     template_name = 'delete.html'
     queryset = Post.objects.all()
-    success_url = reverse_lazy('newsPort:delete')
+    success_url = reverse_lazy('newsPort:allnews')
