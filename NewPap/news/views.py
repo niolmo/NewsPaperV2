@@ -1,12 +1,13 @@
 from datetime import datetime
 from django.shortcuts import render
 from django.views.generic.base import View
-from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView, TemplateView
 from .models import Post
 from .forms import PosForm
 from django.core.paginator import Paginator
 from .filters import PostFilter
 from django.urls import reverse_lazy
+from .forms import LoginForm
 
 
 class PostView(View):
@@ -90,3 +91,8 @@ class PostDelete(DeleteView):
     template_name = 'delete.html'
     queryset = Post.objects.all()
     success_url = reverse_lazy('newsPort:allnews')
+
+
+class LoginFormView(TemplateView):
+    template_name = 'userlogin.html'
+    frorm_class = LoginForm
