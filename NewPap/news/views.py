@@ -91,8 +91,3 @@ class PostDelete(DeleteView):
     template_name = 'delete.html'
     queryset = Post.objects.all()
     success_url = reverse_lazy('newsPort:allnews')
-
-
-class LoginFormView(TemplateView):
-    template_name = 'userlogin.html'
-    frorm_class = LoginForm

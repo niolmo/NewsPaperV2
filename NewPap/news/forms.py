@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from .models import *
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class PosForm(ModelForm):
@@ -27,8 +28,3 @@ class PosForm(ModelForm):
                 'placeholder': 'Текст новости'
             })
         }
-
-
-class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput)
-    password = forms.CharField(widget=forms.PasswordInput)
