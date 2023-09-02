@@ -132,3 +132,5 @@ SITE_ID = 1
 
 STATICFILES_DIRS = [
     BASE_DIR / "static"]
+
+LOGIN_URL = '/'

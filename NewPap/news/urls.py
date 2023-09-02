@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-from .views import Search, NewsDetail, PosForm, PostDelete, PostUp, LoginFormView
-
+from .views import Search, NewsDetail, PosForm, PostDelete, PostUp, LoginFomView
 app_name = 'newsPort'
 
 urlpatterns = [
@@ -11,4 +10,5 @@ urlpatterns = [
     path('add', PosForm.as_view(), name='add'),
     path('update/<int:pk>/', PostUp.as_view(), name='up'),
     path('delete/<int:pk>/', PostDelete.as_view(), name='delete'),
+    path('login', LoginFomView.as_view(), name="login")
 ]
