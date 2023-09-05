@@ -7,8 +7,6 @@ from .forms import PosForm
 from django.core.paginator import Paginator
 from .filters import PostFilter
 from django.urls import reverse_lazy
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
 
 
 class PostView(View):
@@ -92,8 +90,3 @@ class PostDelete(DeleteView):
     template_name = 'delete.html'
     queryset = Post.objects.all()
     success_url = reverse_lazy('newsPort:allnews')
-
-
-class LoginFomView(LoginView):
-    template_name = 'userlogin.html'
-    form_class = AuthenticationForm

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'accounts.apps.AccountsConfig',
     'django_filters',
+    'sign.apps.SignConfig',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
