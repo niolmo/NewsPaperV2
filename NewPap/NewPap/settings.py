@@ -139,7 +139,7 @@ SITE_ID = 1
 STATICFILES_DIRS = [
     BASE_DIR / "static"]
 
-LOGIN_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'sign/login'
 LOGUOT_URL = 'sign/login'
 

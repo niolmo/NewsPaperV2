@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView
 from .forms import RegForm
+from django.contrib.auth.models import Group
 
 
 class LoginFomView(LoginView):
@@ -23,6 +24,13 @@ class RegView(CreateView):
     form_class = RegForm
     template_name = 'reg.html'
     success_url = '/'
+
+    def form_valid(self, form):
+        user = form.save()
+        group = Group.objects.get_or_create(name='my_group')[0]
+        user.groups.add('common')  # добавляем нового пользователя в эту группу
+        user.save()
+        return super().form_valid(form)
 
 
 class LogoutView(LoginRequiredMixin, TemplateView):
