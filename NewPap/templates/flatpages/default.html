@@ -22,8 +22,20 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/search">Поиск</a></li>
                         <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:8000/add">Добавить новость</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:8000/sign/login">Войти</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:8000/sign/signup/">Присоединяйся!</a></li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle active" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Войти</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li class="nav-item"><a class="nav-link active text-dark" href="http://127.0.0.1:8000/sign/login">Login_form</a></li>
+                                <li class="nav-item"><a class="nav-link active text-dark" href="http://127.0.0.1:8000/accounts/login">Auth</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle active" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Присоединяйся!</a>
+                            <ul class="dropdown-menu dropdown-menu-end active" aria-labelledby="navbarDropdown">
+                                <li class="nav-item"><a class="nav-link active text-dark" href="http://127.0.0.1:8000/sign/signup/">Reg_form</a></li>
+                                <li class="nav-item"><a class="nav-link active text-dark" href="http://127.0.0.1:8000/accounts/signup">Auth</a></li>
+                            </ul>
+                        </li>
                             </ul>
                         </li>
                     </ul>
