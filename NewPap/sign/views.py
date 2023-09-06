@@ -22,3 +22,11 @@ class RegView(CreateView):
     form_class = RegForm
     template_name = 'reg.html'
     success_url = '/'
+
+
+class LogoutView(LoginRequiredMixin, TemplateView):
+    template_name = 'userlogin.html'
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return super().get(request, *args, **kwargs)

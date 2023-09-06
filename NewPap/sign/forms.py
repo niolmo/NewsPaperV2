@@ -16,3 +16,21 @@ class RegForm(UserCreationForm):
                   "email",
                   "password1",
                   "password2", )
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
+
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError(
+                "Пользователь с таким именем уже существует")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                "Пользователь с таким email уже существует")
+        return super().clean()

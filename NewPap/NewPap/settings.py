@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-_tv5z-qrmbcj$ywn+napl_gogkdb4q!sx#n&4c4z51*a13h-m*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Localhost:8000', '127.0.0.1']
 
 
 # Application definition
@@ -139,19 +139,21 @@ SITE_ID = 1
 STATICFILES_DIRS = [
     BASE_DIR / "static"]
 
-LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = 'Localhost:8000'
+LOGIN_URL = 'Localhost:8000/login'
+LOGUOT_URL = 'Localhost:8000/login'
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
