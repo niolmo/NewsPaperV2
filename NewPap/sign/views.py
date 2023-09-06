@@ -1,3 +1,4 @@
+from telnetlib import LOGOUT
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
@@ -28,5 +29,5 @@ class LogoutView(LoginRequiredMixin, TemplateView):
     template_name = 'userlogin.html'
 
     def get(self, request, *args, **kwargs):
-        logout(request)
+        LOGOUT(request)
         return super().get(request, *args, **kwargs)

@@ -23,6 +23,7 @@ class RegForm(UserCreationForm):
             'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
             'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
         }
+# Провврка сущ.
 
     def clean(self):
         username = self.cleaned_data.get('username')
