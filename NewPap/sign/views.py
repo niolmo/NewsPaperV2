@@ -1,5 +1,4 @@
-from telnetlib import LOGOUT
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import TemplateView
@@ -29,7 +28,7 @@ class RegView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        group = Group.objects.get_or_create(name='my_group')[0]
+        group = Group.objects.get_or_create(name='common')[0]
         user.groups.add('common')  # добавляем нового пользователя в эту группу
         user.save()
         return super().form_valid(form)

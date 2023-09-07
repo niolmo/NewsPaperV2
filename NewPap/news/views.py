@@ -7,6 +7,8 @@ from .forms import PosForm
 from django.core.paginator import Paginator
 from .filters import PostFilter
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
 class PostView(View):
@@ -43,26 +45,10 @@ class NewsDetail(DetailView):
         return context
 
 
-# class PostForm(ListView):
-#     model = Post
-#     template_name = 'addpost.html'
-#     context_object_name = 'post'
-#     ordering = ['publ']
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['choices'] = Post.types
-#         context['form'] = PosForm()
-#         return context
-
-#     def formCreate(self, request, *args, **kwargs):
-#         form = self.form_class(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return super().get(request, *args, **kwargs)
-class PosForm(CreateView):
+class PosForm(PermissionRequiredMixin, CreateView):
     template_name = 'addpost.html'
     form_class = PosForm
+    permission_required = ('Стоп!')
 
     def get_object(self, **kwargs):
         id = self.kwargs.get('pk')
@@ -75,7 +61,7 @@ class PosForm(CreateView):
             return super().get(request, *args, **kwargs)
 
 
-class PostUp(UpdateView):
+class PostUp(LoginRequiredMixin, UpdateView):
     template_name = 'addpost.html'
     fields = ['publ', 'sort', 'categories',
               'title', 'text', 'author']
