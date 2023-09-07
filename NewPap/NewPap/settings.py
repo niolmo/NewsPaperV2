@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
-
+from django.contrib.auth import login
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,21 +139,10 @@ SITE_ID = 1
 STATICFILES_DIRS = [
     BASE_DIR / "static"]
 
-# LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'sign/login'
-LOGUOT_URL = 'sign/login'
+LOGIN_REDIRECT_URL = '/sign/profile'
+LOGIN_URL = 'accounts/login/'
+LOGUOT_URL = '/sing/logout'
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'SCOPE': [
-#             'profile',
-#             'email',
-#         ],
-#         'AUTH_PARAMS': {
-#             'access_type': 'online',
-#         }
-#     }
-# }
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

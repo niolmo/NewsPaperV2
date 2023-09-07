@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from allauth.account.forms import SignupForm
+from django.contrib.auth.models import Group
 
 
 class RegForm(UserCreationForm):
@@ -35,3 +37,12 @@ class RegForm(UserCreationForm):
             raise forms.ValidationError(
                 "Пользователь с таким email уже существует")
         return super().clean()
+
+
+class BasicSignupForm(SignupForm):
+
+    def save(self, request):
+        user = super(BasicSignupForm, self).save(request)
+        basic_group = Group.objects.get_or_create(name='common')
+        basic_group.user_set.add(user)
+        return user

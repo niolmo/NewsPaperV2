@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block head_title %}{% endblock head_title %}</title>
+    </head>
+    <body>
+        {% block body %}
+        {% block content %}
+        <h2 class="text-center">Добро пожаловать {{request.user.username}} !</h2>
+        <div class="text-center">Сдесь будет информация... </div>
+        <a class="btn btn-primary" href="{% url 'login:logout' %}">Выйти</a>
+        {% endblock content %}
+        {% endblock body %}
+        {% block extra_body %}
+        {% endblock extra_body %}
+    </body>
+</html>
