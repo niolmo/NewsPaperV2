@@ -140,7 +140,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"]
 
 LOGIN_REDIRECT_URL = '/sign/profile'
-LOGIN_URL = 'accounts/login/'
+LOGIN_URL = '/accounts/login/'
 LOGUOT_URL = '/sing/logout'
 
 

@@ -24,7 +24,7 @@ class RegView(CreateView):
     model = User
     form_class = RegForm
     template_name = 'reg.html'
-    success_url = '/'
+    success_url = '/login/'
 
     def form_valid(self, form):
         user = form.save()
