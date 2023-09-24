@@ -9,6 +9,7 @@ from .filters import PostFilter
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.views.decorators.cache import cache_page
 
 
 class PostView(View):

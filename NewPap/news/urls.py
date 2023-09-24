@@ -1,11 +1,13 @@
 from django.urls import path
 from . import views
 from .views import Search, NewsDetail, PosForm, PostDelete, PostUp
+from django.views.decorators.cache import cache_page
 
 app_name = 'newsPort'
 
 urlpatterns = [
-    path('', views.PostView.as_view(), name='allnews'),
+    # Раз в 10 минут товар будет записываться в кэш для экономии ресурсов
+    path('', cache_page(60*10)(views.PostView.as_view()), name='allnews'),
     path('<int:pk>', NewsDetail.as_view(), name='detail'),
     path('search', Search.as_view(), name='search'),
     path('add', PosForm.as_view(), name='add'),
