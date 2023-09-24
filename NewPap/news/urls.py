@@ -7,8 +7,8 @@ app_name = 'newsPort'
 
 urlpatterns = [
     # Раз в 10 минут товар будет записываться в кэш для экономии ресурсов
-    path('', cache_page(60*10)(views.PostView.as_view()), name='allnews'),
-    path('<int:pk>', NewsDetail.as_view(), name='detail'),
+    path('', cache_page(1*10)(views.PostView.as_view()), name='allnews'),
+    path('<int:pk>', cache_page(5*10)(NewsDetail.as_view()), name='detail'),
     path('search', Search.as_view(), name='search'),
     path('add', PosForm.as_view(), name='add'),
     path('update/<int:pk>/', PostUp.as_view(), name='up'),

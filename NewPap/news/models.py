@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models import Sum
+from django.core.cache import cache
 
 
 class Author(models.Model):
@@ -91,6 +92,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return f'http://127.0.0.1:8000/{self.id}'
+
+    def save(self, *args, **kwargs):
+        # сначала вызываем метод родителя, чтобы объект сохранился
+        super().save(*args, **kwargs)
+        # затем удаляем его из кэша, чтобы сбросить его
+        cache.delete(f'post-{self.pk}')
 
 
 class Comments(models.Model):

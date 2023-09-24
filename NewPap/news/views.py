@@ -1,4 +1,6 @@
 from datetime import datetime
+from typing import Any
+from django.db import models
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView, TemplateView
@@ -9,7 +11,7 @@ from .filters import PostFilter
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 
 class PostView(View):
@@ -38,6 +40,17 @@ class NewsDetail(DetailView):
     model = Post
     template_name = 'item.html'
     context_object_name = 'post'
+    queryset = Post.objects.all()
+
+    def get_object(self, *args, **kwargs):
+        # метод get действует также. Он забирает значение по ключу, если его нет, то забирает None:
+        obj = cache.get(f'post-{self.kwargs["pk"]}', None)
+
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'product-{self.kwargs["pk"]}', obj)
+
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

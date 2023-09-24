@@ -1,9 +1,10 @@
 {% extends 'flatpages/default.html' %}
 
 {% load custom_filters %}
+{% load cache %}
 
 {% block content %}
-    <h1 class="text-center"> Последние Новости: {{post_list|length}}</h1>
+{% cache 30 header %} <h1 class="text-center"> Последние Новости: {{post_list|length}}</h1> {% endcache %}
     <h3>{{ time_now }}</h3>
     <h3> {{ value1|default_if_none:"ничего" }} </h3>
     <br>
