@@ -180,4 +180,39 @@ CACHES = {
     }
 }
 
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'debug': {
+#             "format": "{process}_{asctime}_{levelname}_{message}",
+#             "style": "{"
+#         },
 
+#         'info': {
+#             # general.log
+#             "format": "{asctime}_{levelname}_{module}_{message}",
+#             "style": "{"
+#         },
+
+#         'warning': {
+#             "format": "{pathname}_{process}_{asctime}_{levelname}_{message}",
+#             "style": "{"
+#         },
+#         'error': {
+#             # errors.log
+#             "format": "{pathname}_{process}_{asctime}_{levelname}_{exc_info}_{message}",
+#             "style": "{"
+#         },
+
+
+#     },
+#     'handlers': {
+
+#     },
+#     'loggers': {
+
+#     }
+
+
+}
