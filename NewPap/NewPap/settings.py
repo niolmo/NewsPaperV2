@@ -186,23 +186,23 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'debug': {
-            'format': '{asctime} :: {levelname} -- {message}',
+            'format': '{asctime}__{levelname} -- {message}',
             'style': '{',
         },
         'info': {
-            'format': '{asctime} :: {levelname} -- {module} : {message}',
+            'format': '{asctime}__{levelname} -- {module} : {message}',
             'style': '{',
         },
         'warning': {
-            'format': '{asctime} :: {levelname} -- {pathname} : {message}',
+            'format': '{asctime}__{levelname} -- {pathname} : {message}',
             'style': '{',
         },
         'error': {
-            'format': '{asctime} :: {levelname} -- {pathname} / {exc_info} :{message}',
+            'format': '{asctime}__{levelname} -- {pathname} / {exc_info} :{message}',
             'style': '{',
         },
         'security': {
-            'format': '{asctime} :: {levelname} -- {module} : {message}',
+            'format': '{asctime}__{levelname} -- {module} : {message}',
             'style': '{',
         },
     },
