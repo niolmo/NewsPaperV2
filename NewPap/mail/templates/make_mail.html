@@ -1,0 +1,31 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}letter{% endblock title %}
+
+{% block content %}
+
+   <div class="w-25 d-flex flex-column align-content-center justify-content-center mx-auto">
+         <h1>Создать письмо</h1>
+         <br>
+         <br>
+         <form action="{% url 'mail:make' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <label class="fw-bold" for="email">Адрес:</label>
+              <input type="email" name="mail"><br>
+          
+              <label class="fw-bold" for="date">Дата:</label>
+              <input type="date" name="date"><br>
+              
+              <label class="fw-bold" for="user_name">Получатель:</label>
+              <input type="text" name="user_name"><br>
+          
+               <label class="fw-bold" for="message">Сообщение:</label>
+               <textarea class="form-control" name="message" id="" rows="3"></textarea><br>
+              
+      
+              <input type="submit" value="Отправить">
+         </form>
+   </div>
+ 
+
+{% endblock content %}

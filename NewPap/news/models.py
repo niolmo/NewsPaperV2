@@ -34,6 +34,7 @@ class Author(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='Категория')
+    subscribers = models.ManyToManyField(User, blank=True)
 
     class Meta:
         ordering = ['-name']
