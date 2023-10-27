@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'mail.apps.MailConfig',
+    'apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -183,7 +184,6 @@ LOGGING = {
         },
     },
 }
-Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
