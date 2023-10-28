@@ -1,3 +1,4 @@
+# D6 По конспкту!!!
 from django.db import models
 from datetime import datetime
 

@@ -1,3 +1,5 @@
+# D6 По конспкту!!!
+
 from django.shortcuts import render, reverse, redirect
 from django.views import View
 # импортируем класс для создание объекта письма с html
